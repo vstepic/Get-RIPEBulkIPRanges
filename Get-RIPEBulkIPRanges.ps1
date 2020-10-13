@@ -1,18 +1,23 @@
-
+# For ip addresses manipulation imports the Indented.Net.IP module
 Install-Module -Name Indented.Net.IP -force  -Scope CurrentUser
 
 function Whois {
-    
+   <#
+    .SYNOPSIS
+        Simulates Whois client
+    .DESCRIPTION
+        Connects to RIPE dataabase (by default) and sends ip address for checking the public address range that belongs. Syntax for quering is only for RIPE, it might not work for quering other RIRs.
+    .EXAMPLE
+        Whois A.B.C.D
+    #>
 param (
-        [Parameter(Mandatory, Position = 1, ValueFromPipeline)]
+        [Parameter(Mandatory, Position = 1)]
         [String]$IPAddress,
 
         [Parameter(Position = 2)]
         [String]$server
     )
-
-
-    
+   
     if ($null -eq $server -or $server -eq '') {$server ="whois.ripe.net" }
     $port = 43
     #make connection
