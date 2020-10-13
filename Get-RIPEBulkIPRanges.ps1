@@ -71,6 +71,16 @@ param (
 }
 
 function Get-RIPEBulkIPRanges {
+    <#
+    .SYNOPSIS
+        Convert public ip addresses from input to public ip range from RIPE.
+    .DESCRIPTION
+        Simple function for querying RIPE database for ip ranges. As input parameter expects file with public ip addresses (one ip address per line) to query for ip range. Output parameter is list of ip address ranges in CIDR format.
+    .INPUTS
+        File path to file containing the ip addresses for checking to RIPE
+    .EXAMPLE
+        Get-RIPEBulkIPRanges -file "C:\Temp\ip.txt"
+    #>
 
     [CmdletBinding()]
     param (
@@ -120,4 +130,3 @@ $ips = Get-Content $file
             return $ipsumlist
         }
 
-Get-RIPEBulkIPRanges -file  "C:\Temp\ip.txt"
